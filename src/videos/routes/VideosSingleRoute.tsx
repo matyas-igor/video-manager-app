@@ -16,7 +16,7 @@ export const VideosSingleRoute: React.FC = () => {
     const result = await handleSubmit(video, videos, authors);
     if (result) {
       // go back to video list if update/edit was successful
-      history.push('/videos');
+      history.push('/videos?refresh=true');
     }
   };
 

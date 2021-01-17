@@ -5,12 +5,12 @@ interface VideosContextProps {
   authors: Author[];
   categories: Category[];
   videos: VideoProcessed[];
-  refetch: () => void;
+  reload: () => void;
 }
 
 export const VideosContext = React.createContext<VideosContextProps>({
   authors: [],
   categories: [],
   videos: [],
-  refetch: () => {},
+  reload: () => {},
 });

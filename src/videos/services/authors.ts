@@ -1,7 +1,7 @@
 import { Author } from '../../common/interfaces';
 
 export const getAuthors = (): Promise<Author[]> => {
-  return fetch(`${process.env.REACT_APP_API}/authors`).then((response) => (response.json() as unknown) as Author[]);
+  return fetch(`${process.env.REACT_APP_API}/authors`, { cache: 'no-cache' }).then((response) => (response.json() as unknown) as Author[]);
 };
 
 export const updateAuthor = (authorId: number, videos: any): Promise<Response> => {
@@ -18,7 +18,7 @@ export const createAuthorVideo = (author: Author, video: any): Promise<Response>
 };
 
 export const updateAuthorVideo = (author: Author, video: any): Promise<Response> => {
-  const videos = author.videos.filter((v) => (v.id === video.id ? video : v));
+  const videos = author.videos.map((v) => (v.id === video.id ? video : v));
   return updateAuthor(author.id, videos);
 };
 

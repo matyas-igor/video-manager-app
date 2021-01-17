@@ -6,9 +6,9 @@ import { useVideos } from './hooks/useVideos';
 import { VideosContext } from './VideosContext';
 
 export const VideosRouter: React.FC = () => {
-  const { error, loading, authors, categories, videos, refetch } = useVideos();
+  const { error, loading, authors, categories, videos, reload } = useVideos();
   return (
-    <VideosContext.Provider value={{ authors, categories, videos, refetch }}>
+    <VideosContext.Provider value={{ authors, categories, videos, reload }}>
       <Switch>
         <Route exact path="/videos">
           <VideosIndexRoute />

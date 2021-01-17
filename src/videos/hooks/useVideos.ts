@@ -9,7 +9,7 @@ interface UseVideosReturn {
   authors: Author[];
   categories: Category[];
   videos: VideoProcessed[];
-  refetch: () => void;
+  reload: () => void;
 }
 
 export const useVideos = (): UseVideosReturn => {
@@ -37,7 +37,8 @@ export const useVideos = (): UseVideosReturn => {
       });
   };
 
-  const refetch = (): void => {
+  // reload data
+  const reload = (): void => {
     start();
   };
 
@@ -46,5 +47,5 @@ export const useVideos = (): UseVideosReturn => {
     start();
   }, []);
 
-  return { error, loading, authors, categories, videos, refetch };
+  return { error, loading, authors, categories, videos, reload };
 };
