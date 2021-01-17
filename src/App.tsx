@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { TopMenu } from './common/components/TopMenu';
 import { VideosRouter } from './videos/VideosRouter';
+import { PagesRouter } from './pages/PagesRouter';
 import { Container } from '@material-ui/core';
 
 const App: React.FC = () => {
@@ -11,10 +12,13 @@ const App: React.FC = () => {
       <CssBaseline />
       <Router>
         <TopMenu />
-        <Container style={{ marginTop: '40px' }}>
+        <Container style={{ marginTop: '40px 0', marginBottom: '40px' }}>
           <Switch>
             <Route path="/videos">
               <VideosRouter />
+            </Route>
+            <Route path="/pages">
+              <PagesRouter />
             </Route>
             <Route path="*">
               <Redirect to="/videos" />
