@@ -5,18 +5,15 @@ export const getAuthors = (): Promise<Author[]> => {
 };
 
 export const updateAuthor = (authorId: number, videos: any): Promise<Response> => {
-  console.log('VIDEOS', videos);
   return fetch(`${process.env.REACT_APP_API}/authors/${authorId}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ videos }),
   });
 };
 
 export const createAuthorVideo = (author: Author, video: any): Promise<Response> => {
-  const videos = author.videos.push(video);
+  const videos = [...author.videos, video];
   return updateAuthor(author.id, videos);
 };
 
