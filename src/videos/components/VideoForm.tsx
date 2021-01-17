@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Button, LinearProgress, FormHelperText, Grid, InputLabel, Select, TextField } from '@material-ui/core';
+import { Button, FormHelperText, Grid, InputLabel, Select, TextField } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import { Author, Category, VideoInput } from '../../common/interfaces';
@@ -23,7 +23,7 @@ interface VideoFormProps {
   video: VideoInput;
   authors: Author[];
   categories: Category[];
-  onSubmit?: (video: VideoInput) => Promise<void>;
+  onSubmit: (video: VideoInput) => Promise<void>;
 }
 
 const validationSchema = yup.object({

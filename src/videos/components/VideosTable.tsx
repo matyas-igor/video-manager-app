@@ -28,7 +28,7 @@ export const VideosTable: React.FC<VideosTableProps> = ({ videos }) => {
               <TableCell>{video.name}</TableCell>
               <TableCell>{video.author}</TableCell>
               <TableCell>{video.categories.join(', ')}</TableCell>
-              <TableCell>
+              <TableCell width={220}>
                 <Button
                   component={Link}
                   size="small"

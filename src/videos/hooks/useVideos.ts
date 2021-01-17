@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Author, Category, VideoProcessed } from '../../common/interfaces';
 import { getVideos } from '../services/videos';
 
-interface UseVideosReturns {
+interface UseVideosReturn {
   error: Error | null;
   loading: boolean;
   authors: Author[];
@@ -12,7 +12,7 @@ interface UseVideosReturns {
   refetch: () => void;
 }
 
-export const useVideos = (): UseVideosReturns => {
+export const useVideos = (): UseVideosReturn => {
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [authors, setAuthors] = useState<Author[]>([]);

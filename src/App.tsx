@@ -5,10 +5,16 @@ import { TopMenu } from './common/components/TopMenu';
 import { VideosRouter } from './videos/VideosRouter';
 import { PagesRouter } from './pages/PagesRouter';
 import { Container } from '@material-ui/core';
+import { SnackbarProvider } from 'notistack';
 
 const App: React.FC = () => {
   return (
-    <>
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'center',
+      }}>
       <CssBaseline />
       <Router>
         <TopMenu />
@@ -26,7 +32,7 @@ const App: React.FC = () => {
           </Switch>
         </Container>
       </Router>
-    </>
+    </SnackbarProvider>
   );
 };
 

@@ -1,15 +1,28 @@
 import React, { useContext } from 'react';
 import { Typography } from '@material-ui/core';
-import { Redirect, useParams, useRouteMatch } from 'react-router-dom';
+import { Redirect, useParams, useRouteMatch, useHistory } from 'react-router-dom';
 import { Breadcrumbs } from '../../common/components/Breadcrumbs';
 import { VideosContext } from '../VideosContext';
 import { VideoForm } from '../components/VideoForm';
 import { VideoInput } from '../../common/interfaces';
+import { useVideoForm } from '../hooks/useVideoForm';
 
 export const VideosSingleRoute: React.FC = () => {
-  const isAddForm = useRouteMatch('/videos/add');
+  const history = useHistory();
   const { videos, authors, categories } = useContext(VideosContext);
+
+  const { handleSubmit } = useVideoForm();
+  const onSubmit = async (video: VideoInput) => {
+    const result = await handleSubmit(video, videos, authors);
+    if (result) {
+      // go back to video list if update/edit was successful
+      history.push('/videos');
+    }
+  };
+
+  const isAddForm = useRouteMatch('/videos/add');
   let { videoId } = useParams<{ videoId?: string }>();
+
   const video: VideoInput | undefined = isAddForm
     ? { id: 0, name: '', authorId: 0, catIds: [] }
     : videos.find((video) => video.id === parseInt(videoId || '', 10));
@@ -29,7 +42,7 @@ export const VideosSingleRoute: React.FC = () => {
       <Typography variant="h3" component="h1" gutterBottom>
         {isAddForm ? 'Add new video' : `Edit video: ${video.name}`}
       </Typography>
-      <VideoForm key={video.id} video={video} authors={authors} categories={categories} />
+      <VideoForm key={video.id} video={video} authors={authors} categories={categories} onSubmit={onSubmit} />
     </>
   );
 };
