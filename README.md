@@ -1,32 +1,18 @@
-![movingimage](./assets/00-mi-logo.png)
-
-# Front-end developer challenge
-
-The aim of the implementation is not to complete the assignment (of course this would be great), but rather to find out more about your approach, the ***quality, cleanliness and structure*** of your code, and get to know your personal ***prioritization***. This means that it’s better if send an unfinished app with code you can be proud of, rather than a complete app with lots of messy code.
-Mockups in this task are just a design suggestion – you are free to implement any other design as soon as it looks OK and meets the requirements.
-
-### Notes
+## Notes
 
 - The backend can be accessed via http://localhost:3001
 - It runs with a package called ***json-server***, and the data comes from the ***db.json*** file
-- The JSON structure of the ***db.json*** file was twisted a bit on purpose. Please do not change the original DB structure. Of course, on the front-end side you are free to transform and manipulate the data in any way you feel appropriate
-- Material-UI was added to the starter template. If you feel more comforable with another UI framework, you can change it. You can add all the styles that you need
-
-## Steps for the challenge
-- Clone this repository and complete the tasks below
-- Upload your code to a repository of your choosing (GitHub, BitBucket, etc.) and send us the link
 
 ## Steps to run the project
 - Install dependencies with:
 
-```npm i```
+```yarn install```
 
 - Run both the frontend and backend with:
 
-```npm start```
+```yarn start```
 
 ## List view
-UI Suggestion
 
 ![movingimage](./assets/01-landing-page.png)
 
