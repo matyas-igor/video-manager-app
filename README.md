@@ -2,6 +2,7 @@
 
 - The backend can be accessed via http://localhost:3001
 - It runs with a package called ***json-server***, and the data comes from the ***db.json*** file
+- Search performed on front-end level, although it can be moved to back-end side  
 
 ## Steps to run the project
 - Install dependencies with:

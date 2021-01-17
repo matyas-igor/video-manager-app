@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme: Theme) =>
 export const TopMenu: React.FC = () => {
   const classes = useStyles();
   const isHomePage = useRouteMatch('/videos');
-  const isAboutPage = useRouteMatch('/pages/about');
-  const isFAQPage = useRouteMatch('/pages/faq');
+  const isAboutPage = useRouteMatch('/about');
+  const isFAQPage = useRouteMatch('/faq');
   return (
     <AppBar position="static">
       <Toolbar>
@@ -35,10 +35,10 @@ export const TopMenu: React.FC = () => {
           <Button disabled={isHomePage?.isExact} component={Link} color="inherit" to="/videos">
             Home
           </Button>
-          <Button disabled={isAboutPage?.isExact} component={Link} color="inherit" to="/pages/about">
+          <Button disabled={isAboutPage?.isExact} component={Link} color="inherit" to="/about">
             About us
           </Button>
-          <Button disabled={isFAQPage?.isExact} component={Link} color="inherit" to="/pages/faq">
+          <Button disabled={isFAQPage?.isExact} component={Link} color="inherit" to="/faq">
             FAQs
           </Button>
         </div>

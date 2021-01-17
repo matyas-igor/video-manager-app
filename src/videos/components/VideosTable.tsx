@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { ProcessedVideo } from '../../common/interfaces';
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -28,7 +29,13 @@ export const VideosTable: React.FC<VideosTableProps> = ({ videos }) => {
               <TableCell>{video.author}</TableCell>
               <TableCell>{video.categories.join(', ')}</TableCell>
               <TableCell>
-                <Button size="small" variant="contained" color="primary" startIcon={<EditIcon />}>
+                <Button
+                  component={Link}
+                  size="small"
+                  variant="contained"
+                  color="primary"
+                  startIcon={<EditIcon />}
+                  to={`/videos/edit/${video.id}`}>
                   Edit
                 </Button>
                 &nbsp;

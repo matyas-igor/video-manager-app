@@ -12,12 +12,12 @@ const App: React.FC = () => {
       <CssBaseline />
       <Router>
         <TopMenu />
-        <Container style={{ marginTop: '40px 0', marginBottom: '40px' }}>
+        <Container style={{ marginTop: '40px', marginBottom: '40px' }}>
           <Switch>
             <Route path="/videos">
               <VideosRouter />
             </Route>
-            <Route path="/pages">
+            <Route path="/">
               <PagesRouter />
             </Route>
             <Route path="*">

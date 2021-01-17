@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 export const PagesRouter: React.FC = () => {
   return (
     <Switch>
-      <Route exact path="/pages/about">
+      <Route exact path="/about">
         <Typography variant="h3" component="h1" gutterBottom>
           About us
         </Typography>
@@ -13,7 +13,7 @@ export const PagesRouter: React.FC = () => {
           Page is under construction
         </Typography>
       </Route>
-      <Route exact path="/pages/faq">
+      <Route exact path="/faq">
         <Typography variant="h3" component="h1" gutterBottom>
           FAQs
         </Typography>
