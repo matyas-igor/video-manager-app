@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { ProcessedVideo } from '../../common/interfaces';
+import { VideoProcessed } from '../../common/interfaces';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
 interface VideosTableProps {
-  videos: ProcessedVideo[];
+  videos: VideoProcessed[];
 }
 
 export const VideosTable: React.FC<VideosTableProps> = ({ videos }) => {

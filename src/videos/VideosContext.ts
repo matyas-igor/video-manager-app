@@ -1,10 +1,10 @@
 import React from 'react';
-import { Author, Category, ProcessedVideo } from '../common/interfaces';
+import { Author, Category, VideoProcessed } from '../common/interfaces';
 
 interface VideosContextProps {
   authors: Author[];
   categories: Category[];
-  videos: ProcessedVideo[];
+  videos: VideoProcessed[];
   refetch: () => void;
 }
 

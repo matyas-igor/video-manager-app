@@ -15,11 +15,18 @@ export interface Author {
   videos: Video[];
 }
 
-export interface ProcessedVideo {
+export interface VideoProcessed {
   id: number;
   name: string;
   author: string;
   categories: string[];
+  authorId: number;
+  catIds: number[];
+}
+
+export interface VideoInput {
+  id: number;
+  name: string;
   authorId: number;
   catIds: number[];
 }

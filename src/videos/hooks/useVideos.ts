@@ -1,6 +1,6 @@
 // hook fetches misc data for videos, later can be added more infos
 import { useEffect, useState } from 'react';
-import { Author, Category, ProcessedVideo } from '../../common/interfaces';
+import { Author, Category, VideoProcessed } from '../../common/interfaces';
 import { getVideos } from '../services/videos';
 
 interface UseVideosReturns {
@@ -8,7 +8,7 @@ interface UseVideosReturns {
   loading: boolean;
   authors: Author[];
   categories: Category[];
-  videos: ProcessedVideo[];
+  videos: VideoProcessed[];
   refetch: () => void;
 }
 
@@ -17,7 +17,7 @@ export const useVideos = (): UseVideosReturns => {
   const [loading, setLoading] = useState<boolean>(false);
   const [authors, setAuthors] = useState<Author[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [videos, setVideos] = useState<ProcessedVideo[]>([]);
+  const [videos, setVideos] = useState<VideoProcessed[]>([]);
 
   // all data fetching function
   const start = () => {

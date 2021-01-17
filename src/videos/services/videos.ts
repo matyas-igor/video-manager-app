@@ -1,15 +1,15 @@
 import { getCategories } from './categories';
 import { getAuthors } from './authors';
-import { Author, Category, ProcessedVideo } from '../../common/interfaces';
+import { Author, Category, VideoProcessed } from '../../common/interfaces';
 
-export const getVideos = (): Promise<[ProcessedVideo[], Category[], Author[]]> => {
+export const getVideos = (): Promise<[VideoProcessed[], Category[], Author[]]> => {
   return Promise.all([getCategories(), getAuthors()]).then(([categories, authors]) => {
     const categoriesNames: { [key: number]: string } = categories.reduce((acc, category) => ({ ...acc, [category.id]: category.name }), {});
     const authorsNames: { [key: number]: string } = authors.reduce((acc, author) => ({ ...acc, [author.id]: author.name }), {});
 
-    const videos: ProcessedVideo[] = [];
+    const videos: VideoProcessed[] = [];
     authors.forEach((author) => {
-      const videosByAuthor: ProcessedVideo[] = author.videos.map((video) => ({
+      const videosByAuthor: VideoProcessed[] = author.videos.map((video) => ({
         id: video.id,
         name: video.name,
         author: authorsNames[author.id],
