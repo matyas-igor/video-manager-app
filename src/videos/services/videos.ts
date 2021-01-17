@@ -14,6 +14,8 @@ export const getVideos = (): Promise<[ProcessedVideo[], Category[], Author[]]> =
         name: video.name,
         author: authorsNames[author.id],
         categories: video.catIds.sort().map((catId) => categoriesNames[catId]),
+        authorId: author.id,
+        catIds: video.catIds,
       }));
       videos.push(...videosByAuthor);
     });

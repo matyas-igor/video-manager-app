@@ -20,4 +20,6 @@ export interface ProcessedVideo {
   name: string;
   author: string;
   categories: string[];
+  authorId: number;
+  catIds: number[];
 }

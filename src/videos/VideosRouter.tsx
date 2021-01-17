@@ -8,7 +8,7 @@ import { VideosContext } from './VideosContext';
 export const VideosRouter: React.FC = () => {
   const { error, loading, authors, categories, videos, refetch } = useVideos();
   return (
-    <VideosContext.Provider value={{ error, loading, authors, categories, videos, refetch }}>
+    <VideosContext.Provider value={{ authors, categories, videos, refetch }}>
       <Switch>
         <Route exact path="/videos">
           <VideosIndexRoute />
@@ -16,7 +16,7 @@ export const VideosRouter: React.FC = () => {
         <Route path="/videos/add">
           <VideosSingleRoute />
         </Route>
-        <Route path="/videos/edit/:id">
+        <Route path="/videos/edit/:videoId">
           <VideosSingleRoute />
         </Route>
         <Route path="*">
