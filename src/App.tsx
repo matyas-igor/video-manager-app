@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { AppBar, Container, Toolbar, Typography } from '@material-ui/core';
-import { VideosTable } from './components/videos-table';
-import { getVideos } from './services/videos';
-import { ProcessedVideo } from './common/interfaces';
+import React from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { TopMenu } from './common/components/TopMenu';
+import { VideosRouter } from './videos/VideosRouter';
+import { Container } from '@material-ui/core';
 
 const App: React.FC = () => {
-  const [videos, setVideos] = useState<ProcessedVideo[]>([]);
-
-  useEffect(() => {
-    getVideos()
-      .then((videos) => {
-        setVideos(videos);
-      });
-  }, []);
-
   return (
     <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6">Videos</Typography>
-        </Toolbar>
-      </AppBar>
-      <Container>
-        <VideosTable videos={videos} />
-      </Container>
+      <CssBaseline />
+      <Router>
+        <TopMenu />
+        <Container style={{ marginTop: '40px' }}>
+          <Switch>
+            <Route path="/videos">
+              <VideosRouter />
+            </Route>
+            <Route path="*">
+              <Redirect to="/videos" />
+            </Route>
+          </Switch>
+        </Container>
+      </Router>
     </>
   );
 };
