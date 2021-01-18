@@ -5,15 +5,16 @@ import { Breadcrumbs } from '../../common/components/Breadcrumbs';
 import { VideosContext } from '../VideosContext';
 import { VideoForm } from '../components/VideoForm';
 import { VideoInput } from '../../common/interfaces';
-import { useVideoForm } from '../hooks/useVideoForm';
+import { useVideoActions } from '../hooks/useVideoActions';
 
 export const VideosSingleRoute: React.FC = () => {
   const history = useHistory();
   const { videos, authors, categories } = useContext(VideosContext);
 
-  const { handleSubmit } = useVideoForm();
+  // handle form submitting when adding/editing video
+  const { handleUpsert } = useVideoActions();
   const onSubmit = async (video: VideoInput) => {
-    const result = await handleSubmit(video, videos, authors);
+    const result = await handleUpsert(video, videos, authors);
     if (result) {
       // go back to video list if update/edit was successful
       history.push('/videos?refresh=true');

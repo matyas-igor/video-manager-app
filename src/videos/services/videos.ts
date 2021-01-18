@@ -13,7 +13,7 @@ export const getVideos = (): Promise<[VideoProcessed[], Category[], Author[]]> =
         id: video.id,
         name: video.name,
         author: authorsNames[author.id],
-        categories: video.catIds.sort().map((catId) => categoriesNames[catId]),
+        categories: video.catIds.map((catId) => categoriesNames[catId]).sort(),
         authorId: author.id,
         catIds: video.catIds,
       }));
@@ -31,7 +31,7 @@ export const getVideos = (): Promise<[VideoProcessed[], Category[], Author[]]> =
   });
 };
 
-export const upsertVideo = (video: VideoInput, videos: VideoProcessed[], authors: Author[]): Promise<Response> => {
+export const upsertVideo = (video: VideoInput, videos: VideoProcessed[], authors: Author[]): Promise<boolean> => {
   const author = authors.find((a) => a.id === video.authorId);
   const videoExisted = video.id > 0 ? videos.find((v) => v.id === video.id) : undefined;
   const videoLastId = videos[videos.length - 1]?.id || 0;
@@ -40,16 +40,26 @@ export const upsertVideo = (video: VideoInput, videos: VideoProcessed[], authors
     // editing existing video
     if (videoExisted.authorId === video.authorId) {
       // author hasn't changed - just update video
-      return updateAuthorVideo(author!, { id: video.id, name: video.name, catIds: video.catIds });
-    } else {
-      // author has changed - first remove video from the last author & then add to a new one
-      const authorExisted = authors.find((a) => a.id === videoExisted.authorId);
-      return deleteAuthorVideo(authorExisted!, video.id).then(() =>
-        createAuthorVideo(author!, { id: videoLastId + 1, name: video.name, catIds: video.catIds })
+      return updateAuthorVideo(author!, { id: video.id, name: video.name, catIds: video.catIds }).then(
+        (response) => response.status === 200
       );
+    } else {
+      // author has changed - remove video from the last author & add to a new one
+      const authorExisted = authors.find((a) => a.id === videoExisted.authorId);
+      return Promise.all([
+        deleteAuthorVideo(authorExisted!, video.id),
+        createAuthorVideo(author!, { id: videoLastId + 1, name: video.name, catIds: video.catIds }),
+      ]).then(([responseDelete, responseCreate]) => responseDelete.status === 200 && responseCreate.status === 200);
     }
   } else {
     // adding new video
-    return createAuthorVideo(author!, { id: videoLastId + 1, name: video.name, catIds: video.catIds });
+    return createAuthorVideo(author!, { id: videoLastId + 1, name: video.name, catIds: video.catIds }).then(
+      (response) => response.status === 200
+    );
   }
+};
+
+export const deleteVideo = (video: VideoProcessed, authors: Author[]): Promise<boolean> => {
+  const author = authors.find((a) => a.id === video.authorId);
+  return deleteAuthorVideo(author!, video.id).then((response) => response.status === 200);
 };

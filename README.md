@@ -2,7 +2,8 @@
 
 - The backend can be accessed via http://localhost:3001
 - It runs with a package called ***json-server***, and the data comes from the ***db.json*** file
-- Search performed on front-end level, although it can be moved to back-end side  
+- Search performed on front-end level, although it can be moved to the back-end side  
+- Lookup by video name, author & category
 
 ## Steps to run the project
 - Install dependencies with:
