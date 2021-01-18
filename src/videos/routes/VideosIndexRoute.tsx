@@ -8,6 +8,7 @@ import { useVideoActions } from '../hooks/useVideoActions';
 import { VideoProcessed } from '../../common/interfaces';
 import { VideosSearchForm } from '../components/VideosSearchForm';
 import { useVideosToDisplay } from '../hooks/useVideosToDisplay';
+import { useVideosOrder } from '../hooks/useVideosOrder';
 
 export const VideosIndexRoute: React.FC = () => {
   const history = useHistory();
@@ -26,16 +27,20 @@ export const VideosIndexRoute: React.FC = () => {
   // parsing location search parameters
   const { search } = useLocation();
   const { refresh, q } = qs.parse(search);
+
+  // reload data hen url parameter `refetch` is set to true
   useEffect(() => {
     if (refresh === 'true') {
-      // reload data hen url parameter `refetch` is set to true
       reload();
       history.replace('/videos');
     }
   }, []); // eslint-disable-line
 
-  // searching for videos
-  const videosToDisplay = useVideosToDisplay(videos, q as string || '');
+  // sort order for videos
+  const { order, orderBy, onOrderChange } = useVideosOrder();
+
+  // searching & ordering videos
+  const videosToDisplay = useVideosToDisplay(videos, (q as string) || '', orderBy, order);
 
   return (
     <>
@@ -43,7 +48,7 @@ export const VideosIndexRoute: React.FC = () => {
         Videos
       </Typography>
       <VideosSearchForm />
-      <VideosTable videos={videosToDisplay} onDelete={onDelete} />
+      <VideosTable videos={videosToDisplay} onDelete={onDelete} order={order} orderBy={orderBy} onOrderChange={onOrderChange} />
     </>
   );
 };

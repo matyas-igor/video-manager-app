@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import qs from 'query-string';
 import { debounce } from 'lodash';
-import { useLocation, useHistory } from 'react-router-dom';
-import { useUpdateEffect } from 'react-use';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useLatest, useUpdateEffect } from 'react-use';
 import { TextField } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
@@ -18,16 +18,17 @@ export const VideosSearchForm: React.FC = () => {
   const classes = useStyles();
 
   // parsing location search parameters
-  const { search } = useLocation();
   const history = useHistory();
+  const { search } = useLocation();
   const { q } = qs.parse(search);
+  const searchLatest = useLatest(search);
 
   // search value & updating address search `q` param
   const [value, setValue] = useState<string>((q as string) || '');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearch = useCallback(
     debounce((value: string) => {
-      const params = { ...qs.parse(search), q: value };
+      const params = { ...qs.parse(searchLatest.current), q: value };
       history.push({
         search: qs.stringify(params),
       });

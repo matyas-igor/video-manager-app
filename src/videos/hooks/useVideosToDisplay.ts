@@ -1,8 +1,8 @@
 import fuzzysort from 'fuzzysort';
-import { VideoProcessed } from '../../common/interfaces';
+import { Order, OrderBy, VideoProcessed } from '../../common/interfaces';
 import { useMemo } from 'react';
 
-export const useVideosToDisplay = (videos: VideoProcessed[], search: string): VideoProcessed[] => {
+export const useVideosToDisplay = (videos: VideoProcessed[], search: string, orderBy: OrderBy, order: Order): VideoProcessed[] => {
   return useMemo(() => {
     return !search
       ? videos

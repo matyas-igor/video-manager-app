@@ -31,3 +31,6 @@ export interface VideoInput {
   authorId: number;
   catIds: number[];
 }
+
+export type Order = 'asc' | 'desc';
+export type OrderBy = 'name' | 'author';
