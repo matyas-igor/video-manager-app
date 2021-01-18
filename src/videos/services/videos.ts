@@ -48,7 +48,7 @@ export const upsertVideo = (video: VideoInput, videos: VideoProcessed[], authors
       const authorExisted = authors.find((a) => a.id === videoExisted.authorId);
       return Promise.all([
         deleteAuthorVideo(authorExisted!, video.id),
-        createAuthorVideo(author!, { id: videoLastId + 1, name: video.name, catIds: video.catIds }),
+        createAuthorVideo(author!, { id: video.id, name: video.name, catIds: video.catIds }),
       ]).then(([responseDelete, responseCreate]) => responseDelete.status === 200 && responseCreate.status === 200);
     }
   } else {

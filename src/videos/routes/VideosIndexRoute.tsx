@@ -6,6 +6,7 @@ import { VideosTable } from '../components/VideosTable';
 import { VideosContext } from '../VideosContext';
 import { useVideoActions } from '../hooks/useVideoActions';
 import { VideoInput, VideoProcessed } from '../../common/interfaces';
+import { VideosSearchForm } from '../components/VideosSearchForm';
 
 export const VideosIndexRoute: React.FC = () => {
   const history = useHistory();
@@ -37,6 +38,7 @@ export const VideosIndexRoute: React.FC = () => {
       <Typography variant="h3" component="h1" gutterBottom>
         Videos
       </Typography>
+      <VideosSearchForm />
       <VideosTable videos={videos} onDelete={onDelete} />
     </>
   );
