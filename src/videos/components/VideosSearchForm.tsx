@@ -24,8 +24,8 @@ export const VideosSearchForm: React.FC = () => {
 
   // search value & updating address search `q` param
   const [value, setValue] = useState<string>((q as string) || '');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearch = useCallback(
-    // eslint-disable-line
     debounce((value: string) => {
       const params = { ...qs.parse(search), q: value };
       history.push({

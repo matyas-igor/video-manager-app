@@ -22,6 +22,7 @@ export interface VideoProcessed {
   categories: string[];
   authorId: number;
   catIds: number[];
+  search: string;
 }
 
 export interface VideoInput {

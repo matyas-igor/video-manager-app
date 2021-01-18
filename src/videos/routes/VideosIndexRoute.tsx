@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import qs from 'query-string';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { VideosTable } from '../components/VideosTable';
 import { VideosContext } from '../VideosContext';
 import { useVideoActions } from '../hooks/useVideoActions';
-import { VideoInput, VideoProcessed } from '../../common/interfaces';
+import { VideoProcessed } from '../../common/interfaces';
 import { VideosSearchForm } from '../components/VideosSearchForm';
+import { useVideosToDisplay } from '../hooks/useVideosToDisplay';
 
 export const VideosIndexRoute: React.FC = () => {
   const history = useHistory();
@@ -24,7 +25,7 @@ export const VideosIndexRoute: React.FC = () => {
 
   // parsing location search parameters
   const { search } = useLocation();
-  const { refresh } = qs.parse(search);
+  const { refresh, q } = qs.parse(search);
   useEffect(() => {
     if (refresh === 'true') {
       // reload data hen url parameter `refetch` is set to true
@@ -33,13 +34,16 @@ export const VideosIndexRoute: React.FC = () => {
     }
   }, []); // eslint-disable-line
 
+  // searching for videos
+  const videosToDisplay = useVideosToDisplay(videos, q as string || '');
+
   return (
     <>
       <Typography variant="h3" component="h1" gutterBottom>
         Videos
       </Typography>
       <VideosSearchForm />
-      <VideosTable videos={videos} onDelete={onDelete} />
+      <VideosTable videos={videosToDisplay} onDelete={onDelete} />
     </>
   );
 };

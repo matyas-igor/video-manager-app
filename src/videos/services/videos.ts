@@ -16,6 +16,7 @@ export const getVideos = (): Promise<[VideoProcessed[], Category[], Author[]]> =
         categories: video.catIds.map((catId) => categoriesNames[catId]).sort(),
         authorId: author.id,
         catIds: video.catIds,
+        search: `${video.name} ${authorsNames[author.id]} ${video.catIds.map((catId) => categoriesNames[catId]).join(' ')}`, // search string
       }));
       videos.push(...videosByAuthor);
     });
