@@ -17,7 +17,9 @@
 
 ## List view
 
-![movingimage](./assets/01-landing-page.png)
+![Screen Shot 2021-01-18 at 15 08 32](https://user-images.githubusercontent.com/3536796/104913942-a564b200-598e-11eb-984c-8c409485be7c.png)
+
+![Screen Shot 2021-01-18 at 15 08 45](https://user-images.githubusercontent.com/3536796/104913989-bc0b0900-598e-11eb-89d0-b1d75776e4be.png)
 
 ### Specs
 
@@ -31,7 +33,7 @@
 
 ## Add a video
 
-![movingimage](./assets/02-add-video-page.png)
+![Screen Shot 2021-01-18 at 15 09 15](https://user-images.githubusercontent.com/3536796/104914069-dc3ac800-598e-11eb-84f9-06e7130a95bd.png)
 
 ### Specs
 
@@ -45,9 +47,9 @@
 
 ## Edit a video
 
-![movingimage](./assets/03-edit-video-page.png)
+![Screen Shot 2021-01-18 at 15 09 11](https://user-images.githubusercontent.com/3536796/104914042-d218c980-598e-11eb-9f33-a0b53329e7a6.png)
 
-### Requirements
+### Specs
 
 - There is an interaction element to edit existing video information
 - Clicking on this element will take you to a form view
@@ -56,7 +58,7 @@
 
 ## Delete a video
 
-![movingimage](./assets/04-delete-video-button.png)
+![Screen Shot 2021-01-18 at 15 08 59](https://user-images.githubusercontent.com/3536796/104914008-c62d0780-598e-11eb-8a99-aa02721eaf0d.png)
 
 ### Specs
 
