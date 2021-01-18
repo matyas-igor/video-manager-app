@@ -35,6 +35,7 @@ const validationSchema = yup.object({
 export const VideoForm: React.FC<VideoFormProps> = ({ video, authors, categories, onSubmit }) => {
   const classes = useStyles();
   const history = useHistory();
+
   const formik = useFormik({
     initialValues: video,
     validationSchema,
@@ -48,6 +49,7 @@ export const VideoForm: React.FC<VideoFormProps> = ({ video, authors, categories
       });
     },
   });
+
   return (
     <form onSubmit={formik.handleSubmit} className={classes.form}>
       {/* Video name */}

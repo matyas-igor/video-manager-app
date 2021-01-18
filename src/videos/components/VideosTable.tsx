@@ -17,6 +17,7 @@ export const VideosTable: React.FC<VideosTableProps> = ({ videos, onDelete }) =>
   const { open, processing, name, onCancel, onConfirm, onRequest } = useVideoDelete(onDelete)
   return (
     <>
+      {/* Videos table */}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -58,6 +59,8 @@ export const VideosTable: React.FC<VideosTableProps> = ({ videos, onDelete }) =>
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Video delete dialog */}
       <VideoDeleteDialog
         open={open}
         processing={processing}

@@ -21,6 +21,7 @@ export const VideosSingleRoute: React.FC = () => {
     }
   };
 
+  // preparing video to add/edit form
   const isAddForm = useRouteMatch('/videos/add');
   let { videoId } = useParams<{ videoId?: string }>();
 

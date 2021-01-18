@@ -21,6 +21,7 @@ export const VideosIndexRoute: React.FC = () => {
     }
   };
 
+  // parsing location search parameters
   const { search } = useLocation();
   const { refresh } = qs.parse(search);
   useEffect(() => {
