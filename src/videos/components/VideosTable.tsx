@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { Order, OrderBy, VideoProcessed } from '../../common/interfaces';
-
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import { Link } from 'react-router-dom';
 import { VideoDeleteDialog } from './VideoDeleteDialog';
+import { Order, OrderBy, VideoProcessed } from '../../common/interfaces';
 import { useVideoDelete } from '../hooks/useVideoDelete';
 
 interface VideosTableProps {

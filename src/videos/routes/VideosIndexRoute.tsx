@@ -28,7 +28,7 @@ export const VideosIndexRoute: React.FC = () => {
   const { search } = useLocation();
   const { refresh, q } = qs.parse(search);
 
-  // reload data hen url parameter `refetch` is set to true
+  // reload data hen url parameter `refresh` is set to true
   useEffect(() => {
     if (refresh === 'true') {
       reload();
